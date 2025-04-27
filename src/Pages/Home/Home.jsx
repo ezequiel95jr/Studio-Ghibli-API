@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "../../Components/Card/Card";
+import SearchBar from "../../Components/SearchBar/SearchBar";
 const Home = () => {
 
 const [peliculas, setPeliculas] = useState([]);
@@ -20,8 +21,14 @@ useEffect(() => {
 
 return (
         <div className="home-container">
+            <SearchBar
+            
+            />
             {peliculas.map((pelicula) => (
-                <Card key={pelicula.id} pelicula={pelicula} />
+                <Card
+                key={pelicula.id} 
+                pelicula={pelicula} 
+                />
             ))}
         </div>
     );
