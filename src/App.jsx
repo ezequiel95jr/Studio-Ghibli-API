@@ -1,22 +1,21 @@
 import { useState } from 'react'
-
+import Favoritos from './Pages/Favoritos/Favoritos'
 import Home from './Pages/Home/Home'
 
-import { BrowserRouter, Routes, Route } from 'react-router'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
 import Header from './Components/Header/Header'
 
 function App() {
-
-
   return (
-    <div className="App">
+    <div className=" min-h-screen bg-gray-100">
+      
       <Header />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Home />} />
-        </Routes>
-      </BrowserRouter>
+      
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Favoritos" element={<Favoritos />} />
+      </Routes>
     </div>
   )
 }
