@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "../../Components/Card/Card";
+import styles from "./Home.module.css";
 const Home = () => {
 
     const [peliculas, setPeliculas] = useState([]);
@@ -21,13 +22,18 @@ const Home = () => {
 
 
     return (
-        <div className="grid grid-cols-4 grid-rows-3 gap-4">
+        <div className={styles.home}>
+            <div className={styles.titulo}>
+            <h2>Lista de películas</h2>
+            </div>
+            <div className={styles.contenedor}>
             {peliculas.map((pelicula) => (
                 <Card
                 key={pelicula.id} 
                 pelicula={pelicula} 
                 />
             ))}
+            </div>
         </div>
     );
 

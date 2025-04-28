@@ -1,16 +1,7 @@
-
 .App {
-  flex-direction: column;
+  display:list-item;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  
-
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  width: 100%;
 }
