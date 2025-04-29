@@ -23,10 +23,10 @@ const Home = () => {
 
     return (
         <div className={styles.home}>
-            <div className={styles.titulo}>
+            <div className="text-3xl text-white text-center mb-4 pt-4">
             <h2>Lista de películas</h2>
             </div>
-            <div className={styles.contenedor}>
+            <div className="flex flex-wrap justify-center gap-[60px] w-full h-full bg-black font-sans text-[#333] text-center p-5">
             {peliculas.map((pelicula) => (
                 <Card
                 key={pelicula.id} 
