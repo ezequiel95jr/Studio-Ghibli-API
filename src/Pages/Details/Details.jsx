@@ -22,16 +22,19 @@ const Details = () => {
     }
 
     return (
-        <div className={styles.details}>
-            <div className={styles.card}>
-                <h2>{peliculaSeleccionada.title}</h2>
-                <img
-                    src={peliculaSeleccionada.image}
-                    alt={peliculaSeleccionada.title}
-                    className="w-76 h-auto"
-                />
-            </div>
-        </div>
+        <div className="flex flex-col items-center justify-center h-screen p-5 bg-black">
+  <div className="bg-[#515151] rounded-lg shadow-md max-w-[800px] w-full p-5 mt-7 text-center">
+    <h2 className="text-white text-5xl font-bold mb-5">{peliculaSeleccionada.title}</h2>
+    <div className="w-full flex justify-start overflow-hidden">
+      <img
+        src={peliculaSeleccionada.image}
+        alt={peliculaSeleccionada.title}
+        className="object-contain w-[auto] max-w-[300px] h-[auto] max-h-[500px] mr-5"
+      />
+    </div>
+  </div>
+</div>
+
     );     
 };
 

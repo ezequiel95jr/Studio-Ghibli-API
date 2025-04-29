@@ -1,10 +1,11 @@
 import { Link } from 'react-router';
 import styles from "./Card.module.css";
+import { ROUTES } from "../../const/routes";
 
 const Card = ({ pelicula }) => {
   return (
     <div>
-      <Link to={`/details/${pelicula.id}`}>
+      <Link to={ROUTES.detailsPath(pelicula.id)}>
         <div className="flex-[0_1_calc(25%-20px)] bg-[#515151] p-2.5 rounded-lg shadow-md transition-transform transition-shadow duration-300 text-white hover:scale-105 hover:shadow-lg max-w-[300px] flex flex-col">
           
           {/* Título con estilo que ajusta el texto */}
