@@ -10,11 +10,12 @@ const Card = ({ pelicula }) => {
           
           {/* Título con estilo que ajusta el texto */}
           <h3 className="text-center text-lg font-bold break-words overflow-hidden">{pelicula.title}</h3>
+          <h3 className="text-gray-400 font-normal">({pelicula.original_title})</h3>
           
           <img
             src={pelicula.image}
             alt={pelicula.title}
-            className="w-full h-auto"
+            className="w-full h-auto rounded-lg"
           />
           
           {/* Detalles opcionales de la película */}

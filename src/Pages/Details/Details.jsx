@@ -1,41 +1,92 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import Button from '../../Components/Button/Button';
 import styles from './Details.module.css';
+import { Heart } from 'lucide-react';
 
-const Details = () => { 
-    const [pelicula, setPelicula] = useState([]);
-    const { id } = useParams();
+const Details = () => {
+  const [pelicula, setPelicula] = useState([]);
+  const { id } = useParams();
+  const [favoritos, setFavoritos] = useState(() => {
+    const favsGuardados = localStorage.getItem("favoritos");
+    return favsGuardados ? JSON.parse(favsGuardados) : [];
+  });
 
-    const getPelicula = async () => {
-        const res = await fetch("https://ghibliapi.vercel.app/films");
-        const parsed = await res.json();
-        setPelicula(parsed);
-    };
+  const getPelicula = async () => {
+    const res = await fetch("https://ghibliapi.vercel.app/films");
+    const parsed = await res.json();
+    setPelicula(parsed);
+  };
 
-    useEffect(() => {   
-        getPelicula();
-    }, []);
+  useEffect(() => {
+    getPelicula();
+  }, []);
 
-    const peliculaSeleccionada = pelicula.find(p => p.id === id);
-    if (!peliculaSeleccionada) {
-        return <div>Cargando...</div>;
+  const peliculaSeleccionada = pelicula.find(p => p.id === id);
+  if (!peliculaSeleccionada) {
+    return <div>Cargando...</div>;
+  }
+  //funcion para agregar a favoritos
+
+  const esFavorita = favoritos.some(p => p.id === peliculaSeleccionada.id);
+
+  const agregarFavorito = () => {
+    const yaAgregada = favoritos.some(p => p.id === peliculaSeleccionada.id);
+
+    let nuevosFavoritos = [...favoritos];
+    if (yaAgregada) {
+      nuevosFavoritos = favoritos.filter(p => p.id !== peliculaSeleccionada.id);
+
+    } else {
+      nuevosFavoritos = [...favoritos, peliculaSeleccionada];
+
     }
 
-    return (
-        <div className="flex flex-col items-center justify-center h-screen p-5 bg-black">
-  <div className="bg-[#515151] rounded-lg shadow-md max-w-[800px] w-full p-5 mt-7 text-center">
-    <h2 className="text-white text-5xl font-bold mb-5">{peliculaSeleccionada.title}</h2>
-    <div className="w-full flex justify-start overflow-hidden">
-      <img
-        src={peliculaSeleccionada.image}
-        alt={peliculaSeleccionada.title}
-        className="object-contain w-[auto] max-w-[300px] h-[auto] max-h-[500px] mr-5"
-      />
-    </div>
-  </div>
-</div>
+    setFavoritos(nuevosFavoritos);
+    localStorage.setItem("favoritos", JSON.stringify(nuevosFavoritos));
+  }
 
-    );     
+  return (
+
+    <div
+
+      className={styles.banner}
+      style={{ '--banner-url': `url(${peliculaSeleccionada.movie_banner})` }}
+    >
+      <div className={styles.content}>
+        <div className="flex justify-between items-center mb-5">
+          <h2 className="text-white text-5xl font-bold mb-5">
+            {peliculaSeleccionada.title}<span className="text-gray-400 font-normal text-base"> ({peliculaSeleccionada.original_title})</span>
+          </h2>
+         
+          <button onClick={agregarFavorito} className='flex items-center  mb-4'>
+            <Heart color={esFavorita ? 'red' : 'gray'} fill={esFavorita ? 'red' : 'none'} />
+            <span>{esFavorita}</span>
+          </button>
+
+        </div>
+        <div className="w-full flex justify-start overflow-hidden">
+          <img
+            src={peliculaSeleccionada.image}
+            alt={peliculaSeleccionada.title}
+            className="object-contain w-auto max-w-[300px] h-auto max-h-[500px] mr-5"
+          />
+          <div className="mt-5 text-white">
+           
+            <p><strong>Director:</strong> {peliculaSeleccionada.director}</p>
+            <p><strong>Productor:</strong> {peliculaSeleccionada.producer}</p>
+            <p><strong>Año de estreno:</strong> {peliculaSeleccionada.release_date}</p>
+            <p><strong>Duración:</strong> {peliculaSeleccionada.running_time} minutos</p>
+            <p><strong>Rating:</strong> {peliculaSeleccionada.rt_score}</p>
+            <p><strong>Título original romanizado:</strong>{peliculaSeleccionada.original_title_romanised}</p>
+            <p><strong>Descripción:</strong> {peliculaSeleccionada.description}</p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  );
 };
 
 export default Details;
