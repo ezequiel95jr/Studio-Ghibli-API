@@ -6,31 +6,35 @@ import { Heart } from 'lucide-react';
 import fondo from '../../assets/images/fondo.png';
 
 const Details = () => {
-  const [pelicula, setPelicula] = useState([]);
+  const [error, setError] = useState(null);
+  const [peliculaSeleccionada, setPelicula] = useState([]);
   const { id } = useParams();
   const [favoritos, setFavoritos] = useState(() => {
     const favsGuardados = localStorage.getItem("favoritos");
     return favsGuardados ? JSON.parse(favsGuardados) : [];
   });
 
-  const getPelicula = async () => {
-    const res = await fetch("https://ghibliapi.vercel.app/films");
-    const parsed = await res.json();
-    setPelicula(parsed);
-  };
-
   useEffect(() => {
-    getPelicula();
-  }, []);
+    const getPelicula = async () => {
+      try {
+        const res = await fetch(`https://ghibliapi.vercel.app/films/${id}`);
+        if (!res.ok) throw new Error("La película no existe en la API");
+        const data = await res.json();
+        console.log("data: ",data);
+        setPelicula(data);
+      } catch (err) {
+        setError(err.message);
+      }
+    };
 
-  const peliculaSeleccionada = pelicula.find(p => p.id === id);
-  if (!peliculaSeleccionada) {
-    return <div>Cargando...</div>;
-  }
+    getPelicula();
+  }, [id]);
+
+  if (error) return <div>{error}</div>;
+  if (!peliculaSeleccionada) return <div>Cargando...</div>;
   //funcion para agregar a favoritos
 
   const esFavorita = favoritos.some(p => p.id === peliculaSeleccionada.id);
-
   const agregarFavorito = () => {
     const yaAgregada = favoritos.some(p => p.id === peliculaSeleccionada.id);
 
@@ -45,7 +49,7 @@ const Details = () => {
 
     setFavoritos(nuevosFavoritos);
     localStorage.setItem("favoritos", JSON.stringify(nuevosFavoritos));
-  }
+} 
 
   return (
 
@@ -59,12 +63,12 @@ const Details = () => {
           <h2 className="text-white text-5xl font-bold mb-5">
             {peliculaSeleccionada.title}<span className="text-gray-400 font-normal text-base"> ({peliculaSeleccionada.original_title})</span>
           </h2>
-         
+          <div>
           <button onClick={agregarFavorito} className='flex items-center  mb-4'>
             <Heart color={esFavorita ? 'red' : 'gray'} fill={esFavorita ? 'red' : 'none'} />
             <span>{esFavorita}</span>
           </button>
-
+          </div>
         </div>
         <div className="w-full flex justify-start overflow-hidden">
           <img

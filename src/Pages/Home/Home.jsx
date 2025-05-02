@@ -13,7 +13,6 @@ const Home = () => {
 
         const pelisParsed = await pelisRes.json();
         setPeliculas(pelisParsed);
-        console.log(pelisParsed);
     };
 
     useEffect(() => {
