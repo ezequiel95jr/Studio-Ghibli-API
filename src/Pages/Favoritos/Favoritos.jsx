@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
 import Button from '../../Components/Button/Button';
-
-
-
 
 const Favoritos = () => {
 
@@ -29,7 +25,9 @@ return (
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {favoritos.map((pelicula) => (
-            <div key={pelicula.id} className="bg-[#515151] rounded-lg shadow-md p-5">
+            <div key={pelicula.id}
+            className="bg-cover bg-center bg-no-repeat rounded-lg shadow-md p-5"
+              style={{ backgroundImage: `url(${pelicula.movie_banner})` }}>
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-white text-xl font-semibold">{pelicula.title}</h3>
                 

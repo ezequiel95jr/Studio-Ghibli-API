@@ -5,6 +5,7 @@ import Home from './Pages/Home/Home'
 import { Routes, Route } from 'react-router-dom'
 import "./App.css"
 import Header from './Components/Header/Header'
+import Footer from './Components/Footer/Footer'
 import { ROUTES } from './const/routes'
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path={ROUTES.details} element={<Details />} />
         <Route path={ROUTES.favoritos} element={<Favoritos />} />
       </Routes>
+      <Footer />
     </div>
   )
 }

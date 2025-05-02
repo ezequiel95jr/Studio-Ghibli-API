@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Button from '../../Components/Button/Button';
 import styles from './Details.module.css';
 import { Heart } from 'lucide-react';
+import fondo from '../../assets/images/fondo.png';
 
 const Details = () => {
   const [pelicula, setPelicula] = useState([]);
