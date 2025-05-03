@@ -20,7 +20,6 @@ const Details = () => {
         const res = await fetch(`https://ghibliapi.vercel.app/films/${id}`);
         if (!res.ok) throw new Error("La película no existe en la API");
         const data = await res.json();
-        console.log("data: ",data);
         setPelicula(data);
       } catch (err) {
         setError(err.message);
@@ -61,7 +60,7 @@ const Details = () => {
       <div className={styles.content}>
         <div className="flex justify-between items-center mb-5">
           <h2 className="text-white text-5xl font-bold mb-5">
-            {peliculaSeleccionada.title}<span className="text-gray-400 font-normal text-base"> ({peliculaSeleccionada.original_title})</span>
+            {peliculaSeleccionada.title}<span className="text-gray-400 font-semibold text-base"> ({peliculaSeleccionada.original_title})</span>
           </h2>
           <div>
           <button onClick={agregarFavorito} className='flex items-center  mb-4'>

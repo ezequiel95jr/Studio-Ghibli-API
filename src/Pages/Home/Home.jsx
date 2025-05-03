@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
+import { Link } from 'react-router';
+import { ROUTES } from "../../const/routes";
 import Card from "../../Components/Card/Card";
 import styles from "./Home.module.css";
 const Home = () => {
 
     const [peliculas, setPeliculas] = useState([]);
-
 
     const getPeliculas = async () => {
         const pelisRes = await fetch(
@@ -27,10 +28,12 @@ const Home = () => {
             </div>
             <div className="flex flex-wrap justify-center gap-[60px] w-full h-full bg-[()] bg-cover bg-center font-sans text-[#333] text-center p-5">
             {peliculas.map((pelicula) => (
-                <Card
-                key={pelicula.id} 
-                pelicula={pelicula} 
-                />
+                 <Link to={ROUTES.detailsPath(pelicula.id)}>
+                     <Card
+                     key={pelicula.id} 
+                     pelicula={pelicula} 
+                     />
+                 </Link>
             ))}
             </div>
         </div>
