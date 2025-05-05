@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router';
 import { ROUTES } from "../../const/routes";
 import Button from '../../Components/Button/Button';
+import { useTranslation } from 'react-i18next';
 
 const Favoritos = () => {
 
   const [favoritos, setFavoritos] = useState([]);
-
+  const { t } = useTranslation();
   useEffect(() => {
     const peliculasFavoritas = JSON.parse(localStorage.getItem("favoritos")) || [];
     setFavoritos(peliculasFavoritas);
@@ -20,7 +21,7 @@ const Favoritos = () => {
 
   return (
     <div className="p-5">
-      <h2 className="text-3xl text-center font-bold mb-5">Favoritos {favoritos.length}</h2>
+      <h2 className="text-3xl text-center font-bold mb-5">{t('favoritos.titles')} {favoritos.length}</h2>
 
       {favoritos.length === 0 ? (
         <div className="relative bg-grey-800 rounded-lg shadow-md p-10 font-semibold text-center items-center">Aquí no hay nada.</div>
@@ -42,7 +43,7 @@ const Favoritos = () => {
                   />
                 </div>
               </Link>
-              <Button text="Quitar de Favoritos" onClick={() => quitarFavorito(pelicula.id)} />
+              <Button text={t("favoritos.quitar")} onClick={() => quitarFavorito(pelicula.id)} />
             </div>
           ))}
         </div>

@@ -3,12 +3,14 @@ import { useParams } from 'react-router-dom';
 import Button from '../../Components/Button/Button';
 import styles from './Details.module.css';
 import { Heart } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import fondo from '../../assets/images/fondo.png';
 
 const Details = () => {
   const [error, setError] = useState(null);
   const [peliculaSeleccionada, setPelicula] = useState([]);
   const { id } = useParams();
+  const { t } = useTranslation();
   const [favoritos, setFavoritos] = useState(() => {
     const favsGuardados = localStorage.getItem("favoritos");
     return favsGuardados ? JSON.parse(favsGuardados) : [];
@@ -77,13 +79,13 @@ const Details = () => {
           />
           <div className="mt-5 text-white">
            
-            <p><strong>Director:</strong> {peliculaSeleccionada.director}</p>
-            <p><strong>Productor:</strong> {peliculaSeleccionada.producer}</p>
-            <p><strong>Año de estreno:</strong> {peliculaSeleccionada.release_date}</p>
-            <p><strong>Duración:</strong> {peliculaSeleccionada.running_time} minutos</p>
-            <p><strong>Rating:</strong> {peliculaSeleccionada.rt_score}</p>
-            <p><strong>Título original romanizado:</strong>{peliculaSeleccionada.original_title_romanised}</p>
-            <p><strong>Descripción:</strong> {peliculaSeleccionada.description}</p>
+            <p><strong>{t("Details.director")}: </strong> {peliculaSeleccionada.director}</p>
+            <p><strong>{t("Details.productor")}: </strong> {peliculaSeleccionada.producer}</p>
+            <p><strong>{t("Details.year")}: </strong> {peliculaSeleccionada.release_date}</p>
+            <p><strong>{t("Details.duracion")}: </strong> {peliculaSeleccionada.running_time} minutos</p>
+            <p><strong>{t("Details.rating")}:</strong> {peliculaSeleccionada.rt_score}</p>
+            <p><strong>{t("Details.titleRomanizado")}: </strong>{peliculaSeleccionada.original_title_romanised}</p>
+            <p><strong>{t("Details.descripcion")}: </strong> {peliculaSeleccionada.description}</p>
 
           </div>
         </div>
