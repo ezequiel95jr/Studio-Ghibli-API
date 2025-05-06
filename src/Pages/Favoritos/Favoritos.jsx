@@ -34,12 +34,12 @@ const Favoritos = () => {
                 <h3 className="text-white text-xl font-semibold">{pelicula.title}</h3>
               </div>
               <Link to={ROUTES.detailsPath(pelicula.id)}>
-                <div key={pelicula.id} className="bg-cover bg-center bg-no-repeat rounded-lg shadow-md p-5"
+                <div key={pelicula.id} className="bg-cover bg-center bg-no-repeat rounded-lg shadow-md p-6 mb-4"
                   style={{ backgroundImage: `url(${pelicula.movie_banner})` }}>
                   <img
                     src={pelicula.image}
                     alt={pelicula.title}
-                    className="object-contain w-auto h-[200px] mb-3"
+                    className="object-contain w-auto h-[200px]"
                   />
                 </div>
               </Link>
