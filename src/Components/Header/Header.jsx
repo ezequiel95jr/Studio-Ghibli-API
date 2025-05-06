@@ -14,8 +14,11 @@ const Header = () => {
         navigate(ROUTES.favoritos)
     }
     const cambiarIdioma = (e) => {
-        i18n.changeLanguage(e.target.value);
-      };
+        const nuevoIdioma = e.target.value;
+        i18n.changeLanguage(nuevoIdioma);
+        localStorage.setItem("idioma", nuevoIdioma);
+    };
+    
     return (
         <header className="sticky top-0 bg-[#333] w-full flex justify-between items-center px-5 py-2.5 text-white z-50">
             <Link to={ROUTES.home}>
