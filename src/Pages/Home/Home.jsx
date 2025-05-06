@@ -37,7 +37,7 @@ const Home = () => {
                     <Busqueda busqueda={busqueda} setBusqueda={setBusqueda} />
                 </div>
             </div>
-            <div className="flex flex-wrap justify-center gap-[60px] w-full h-full bg-[()] bg-cover bg-center font-sans text-[#333] text-center p-5">
+            <div className="flex flex-wrap justify-center gap-[60px] w-full h-full bg-[#A8C6A1] bg-cover bg-center font-sans text-[#333] text-center p-10">
                 {peliculasFiltradas.map((pelicula) => (
                     <Link to={ROUTES.detailsPath(pelicula.id)}>
                         <Card

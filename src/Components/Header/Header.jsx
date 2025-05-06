@@ -20,7 +20,7 @@ const Header = () => {
     };
     
     return (
-        <header className="sticky top-0 bg-[#333] w-full flex justify-between items-center px-5 py-2.5 text-white z-50">
+        <header className="sticky top-0 bg-[#264653] w-full flex justify-between items-center px-5 py-2.5 text-white z-50">
             <Link to={ROUTES.home}>
                 <img src={logo} alt="noface-inicio" className="h-[50px] object-contain transition-transform transition-opacity duration-300 ease-in-out hover:scale-110 hover:opacity-80" />
             </Link>

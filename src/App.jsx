@@ -1,13 +1,12 @@
-import { useState } from 'react'
-import Favoritos from './Pages/Favoritos/Favoritos'
-import Details from './Pages/Details/Details'
-import Home from './Pages/Home/Home'
-import { Routes, Route } from 'react-router-dom'
-import "./App.css"
-import Header from './Components/Header/Header'
+import { Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import Footer from './Components/Footer/Footer'
-import { ROUTES } from './const/routes'
+import Header from './Components/Header/Header';
+import Footer from './Components/Footer/Footer';
+import Home from './Pages/Home/Home';
+import Details from './Pages/Details/Details';
+import Favoritos from './Pages/Favoritos/Favoritos';
+import { ROUTES } from './const/routes';
+import './App.css';
 
 function App() {
   const { t, i18n } = useTranslation();
@@ -15,17 +14,20 @@ function App() {
   const cambiarIdioma = (lng) => {
     i18n.changeLanguage(lng);
   };
+
   return (
-    <div className="App">
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <Routes>
-        <Route path={ROUTES.home} element={<Home />} />
-        <Route path={ROUTES.details} element={<Details />} />
-        <Route path={ROUTES.favoritos} element={<Favoritos />} />
-      </Routes>
+      <main className="flex-1">
+        <Routes>
+          <Route path={ROUTES.home} element={<Home />} />
+          <Route path={ROUTES.details} element={<Details />} />
+          <Route path={ROUTES.favoritos} element={<Favoritos />} />
+        </Routes>
+      </main>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
