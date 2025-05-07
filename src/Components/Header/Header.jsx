@@ -25,6 +25,7 @@ const Header = () => {
                 <img src={logo} alt="noface-inicio" className="h-[50px] object-contain transition-transform transition-opacity duration-300 ease-in-out hover:scale-110 hover:opacity-80" />
             </Link>
             <h1 className="font-bold">{t('header.titles')}</h1>
+
             <div className="flex items-center gap-2">
                 <FaGlobe className="text-xl" />
                 <select

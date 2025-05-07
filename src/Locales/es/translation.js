@@ -19,7 +19,10 @@ const es = {
         "duracion": "Duración",
         "rating": "Clasificación",
         "titleRomanizado": "Título original romanizado",
-        "descripcion": "Descripción"
+        "descripcion": "Descripción",
+        "comentarios": "Comentarios",
+        "agregar": "Agregar a Favoritos",
+        "comentarioAgregado": "Comentario agregado",
     },
     Busqueda:{
         "placeholder": "Buscar película",
@@ -27,7 +30,13 @@ const es = {
     Button:{
         "esp": "Español",
         "ing": "Inglés",
-      }
+      },
+    TextArea:{
+        "placeholder": "Escribe tu comentario aquí...",
+        "enviar": "Enviar",
+        "titulo": "Comentarios",
+        "sinComentarios": "No hay comentarios para esta película.",
+      },
     }
   };
   
