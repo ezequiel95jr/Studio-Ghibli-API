@@ -4,7 +4,7 @@ import styles from './Details.module.css';
 import { Heart } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import Modal from "../../Components/Modal/Modal";
-import Textarea from '../../Components/TextArea/TextArea';
+import Textarea from '../../Components/Textarea/Textarea';
 
 const Details = () => {
   const [error, setError] = useState(null);
