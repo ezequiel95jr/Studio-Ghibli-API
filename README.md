@@ -2,6 +2,7 @@
 https://tp2-seven.vercel.app/
 
 Vasile Riverti Enzo Matias - FAI-3582
+Retamal Ezequiel - FAI-1419
 
 Esta aplicación web permite explorar el catálogo de películas de Studio Ghibli, presentando una lista completa con detalles de cada obra. Los usuarios pueden:
 
