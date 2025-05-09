@@ -1,3 +1,4 @@
+//INGLESSSSS
 const en = {
   translation: {
 
@@ -10,6 +11,8 @@ const en = {
     favoritos: {
       "titles": "Favorites",
       "quitar": "Remove from Favorites",
+      "empty": "No favorites yet",
+      "emptyDescription": "Add movies to your favorites list",
     },
     Details: {
       "director": "Director",
@@ -20,7 +23,9 @@ const en = {
       "titleRomanizado": "Original Romanized Title",
       "descripcion": "Description",
       "comentarios": "Comments",
+      "noPeliculas": "No movies found",
       "agregar": "Add to Favorites",
+      "quitar": "Remove from Favorites",
       "comentarioAgregado": "Comment added",
     },
     Busqueda: {
@@ -35,6 +40,10 @@ const en = {
       "enviar": "Send",
       "titulo": "Comments",
       "sinComentarios": "No comments for this movie.",
+    },
+    NotFound:{
+      "error404": "Error 404: Page not found",
+      "inicio": "Back to home",
     },
   }
 };

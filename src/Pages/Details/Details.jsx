@@ -27,7 +27,7 @@ const Details = () => {
     const getPelicula = async () => {
       try {
         const res = await fetch(`https://ghibliapi.vercel.app/films/${id}`);
-        if (!res.ok) throw new Error("La película no existe en la API");
+        if (!res.ok) throw new Error(t('Details.noPeliculas'));
         const data = await res.json();
         setPelicula(data);
       } catch (err) {
@@ -49,10 +49,10 @@ const Details = () => {
     let nuevosFavoritos = [...favoritos];
     if (yaAgregada) {
       nuevosFavoritos = favoritos.filter(p => p.id !== peliculaSeleccionada.id);
-      setMensajeModal("Película removida de favoritos");
+      setMensajeModal(t('Details.quitar'));
     } else {
       nuevosFavoritos = [...favoritos, peliculaSeleccionada];
-      setMensajeModal("Película agregada a favoritos");
+      setMensajeModal(t('Details.agregar'));
 
     }
 

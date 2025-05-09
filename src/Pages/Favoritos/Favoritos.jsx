@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router';
-import logo from "../../assets/images/noface.png";
+import Logo from "../../assets/images/noface.png";
 import { ROUTES } from "../../const/routes";
 import Button from '../../Components/Button/Button';
 import { useTranslation } from 'react-i18next';
-import studioLogo from "../../assets/images/studio.png"; 
+import studioLogo from "../../assets/images/studio.png";
 
 const Favoritos = () => {
 
@@ -26,15 +26,15 @@ const Favoritos = () => {
 
       {favoritos.length === 0 ? (
         <div className="relative flex flex-col items-center justify-center gap-3 bg-black-100/10 rounded-xl shadow-lg p-8 text-white text-center animate-fade-in">
-                  <img
-                    src={studioLogo}
-                    alt={"Studio Ghibli Logo"}
-                    className="object-contain w-auto h-[200px]"
-                  />
-          <p className="text-lg font-semibold text-gray-300">Aquí no hay nada por ahora</p>
-          <p className="text-sm text-gray-400">¡Agregá contenido para comenzar!</p>
+          <img
+            src={studioLogo}
+            alt={"Studio Ghibli Logo"}
+            className="object-contain w-auto h-[200px]"
+          />
+          <p className="text-lg font-semibold text-gray-300">{t('favoritos.empty')}</p>
+          <p className="text-sm text-gray-400">{t('favoritos.emptyDescription')}</p>
           <Link to={ROUTES.home}>
-            <img src={logo} alt="noface-inicio" className="h-[50px] object-contain transition-transform transition-opacity duration-300 ease-in-out hover:scale-110 hover:opacity-80" />
+            <img src={Logo} alt="noface-inicio" className="h-[50px] object-contain transition-transform transition-opacity duration-300 ease-in-out hover:scale-110 hover:opacity-80" />
           </Link>
         </div>
 

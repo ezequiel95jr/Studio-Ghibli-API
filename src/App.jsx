@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
+import NotFound from './Components/NotFound/NotFound';
 import Home from './Pages/Home/Home';
 import Details from './Pages/Details/Details';
 import Favoritos from './Pages/Favoritos/Favoritos';
@@ -23,6 +24,7 @@ function App() {
           <Route path={ROUTES.home} element={<Home />} />
           <Route path={ROUTES.details} element={<Details />} />
           <Route path={ROUTES.favoritos} element={<Favoritos />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
